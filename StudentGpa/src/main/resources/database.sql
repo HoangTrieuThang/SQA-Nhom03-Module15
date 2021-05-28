@@ -1,13 +1,16 @@
--- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
+
+CREATE DATABASE  IF NOT EXISTS `sinhvien` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sinhvien`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: localhost    Database: studentgpa
+-- Host: localhost    Database: sinhvien
 -- ------------------------------------------------------
--- Server version	8.0.16
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,17 +24,17 @@
 
 DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
-  `id` bigint(20) NOT NULL,
-  `code` varchar(255) DEFAULT NULL,
-  `semester_id` bigint(20) NOT NULL,
-  `subject_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKlmyb73uymsfhqh374ndr3n4c0` (`semester_id`),
-  KEY `FKm1expnaas0onmafqpktmjixnx` (`subject_id`),
-  CONSTRAINT `FKlmyb73uymsfhqh374ndr3n4c0` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`id`),
-  CONSTRAINT `FKm1expnaas0onmafqpktmjixnx` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`)
+                          `id` bigint NOT NULL,
+                          `code` varchar(255) DEFAULT NULL,
+                          `semester_id` bigint NOT NULL,
+                          `subject_id` bigint NOT NULL,
+                          PRIMARY KEY (`id`),
+                          KEY `FKlmyb73uymsfhqh374ndr3n4c0` (`semester_id`),
+                          KEY `FKm1expnaas0onmafqpktmjixnx` (`subject_id`),
+                          CONSTRAINT `FKlmyb73uymsfhqh374ndr3n4c0` FOREIGN KEY (`semester_id`) REFERENCES `semester` (`id`),
+                          CONSTRAINT `FKm1expnaas0onmafqpktmjixnx` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,9 +54,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hibernate_sequence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
+    `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,7 +66,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (48),(48),(48),(48),(48),(48),(48),(48),(48),(48),(48),(48);
+INSERT INTO `hibernate_sequence` VALUES (57),(57),(57),(57),(57),(57),(57),(57),(57),(57),(57),(57);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,11 +76,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `major`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `major` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                         `id` bigint NOT NULL,
+                         `name` varchar(255) DEFAULT NULL,
+                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,14 +100,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `major_subject`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `major_subject` (
-  `subject_id` bigint(20) NOT NULL,
-  `major_id` bigint(20) NOT NULL,
-  KEY `FK5syrdojcrl3chkwe3a9x57iw9` (`major_id`),
-  KEY `FK3yvsbbn2xmdtfl6tp51omshge` (`subject_id`),
-  CONSTRAINT `FK3yvsbbn2xmdtfl6tp51omshge` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`),
-  CONSTRAINT `FK5syrdojcrl3chkwe3a9x57iw9` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`)
+                                 `subject_id` bigint NOT NULL,
+                                 `major_id` bigint NOT NULL,
+                                 KEY `FK5syrdojcrl3chkwe3a9x57iw9` (`major_id`),
+                                 KEY `FK3yvsbbn2xmdtfl6tp51omshge` (`subject_id`),
+                                 CONSTRAINT `FK3yvsbbn2xmdtfl6tp51omshge` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`),
+                                 CONSTRAINT `FK5syrdojcrl3chkwe3a9x57iw9` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,15 +127,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `password_reset_token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_reset_token` (
-  `id` bigint(20) NOT NULL,
-  `expiry_date` datetime DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `user_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK5lwtbncug84d4ero33v3cfxvl` (`user_id`),
-  CONSTRAINT `FK5lwtbncug84d4ero33v3cfxvl` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+                                        `id` bigint NOT NULL,
+                                        `expiry_date` datetime DEFAULT NULL,
+                                        `token` varchar(255) DEFAULT NULL,
+                                        `user_id` bigint NOT NULL,
+                                        PRIMARY KEY (`id`),
+                                        KEY `FK5lwtbncug84d4ero33v3cfxvl` (`user_id`),
+                                        CONSTRAINT `FK5lwtbncug84d4ero33v3cfxvl` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -152,11 +155,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `role` (
-  `role_id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`role_id`)
+                        `role_id` int NOT NULL,
+                        `name` varchar(255) DEFAULT NULL,
+                        PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -176,12 +179,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `semester`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `semester` (
-  `id` bigint(20) NOT NULL,
-  `active` bit(1) NOT NULL,
-  `name` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                            `id` bigint NOT NULL,
+                            `active` bit(1) NOT NULL,
+                            `name` varchar(10) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -191,7 +194,7 @@ CREATE TABLE `semester` (
 
 LOCK TABLES `semester` WRITE;
 /*!40000 ALTER TABLE `semester` DISABLE KEYS */;
-INSERT INTO `semester` VALUES (1,_binary '\0','20191'),(2,_binary '','20192'),(3,_binary '\0','20193');
+INSERT INTO `semester` VALUES (1,_binary '\0','20191'),(2,_binary ' ','20192'),(3,_binary '\0','20193');
 /*!40000 ALTER TABLE `semester` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,24 +204,24 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `id` bigint(20) NOT NULL,
-  `code` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `major_id` bigint(20) NOT NULL,
-  `student_class_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  `date_of_birth` varchar(255) DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
-  `place_of_birth` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKcml1vvjs3bcqyxdcprjrjd2o0` (`major_id`),
-  KEY `FKerf07pcq1qf4h6105lysj704j` (`student_class_id`),
-  KEY `FKk5m148xqefonqw7bgnpm0snwj` (`user_id`),
-  CONSTRAINT `FKcml1vvjs3bcqyxdcprjrjd2o0` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`),
-  CONSTRAINT `FKerf07pcq1qf4h6105lysj704j` FOREIGN KEY (`student_class_id`) REFERENCES `student_class` (`id`),
-  CONSTRAINT `FKk5m148xqefonqw7bgnpm0snwj` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+                           `id` bigint NOT NULL,
+                           `code` varchar(255) DEFAULT NULL,
+                           `name` varchar(255) DEFAULT NULL,
+                           `major_id` bigint NOT NULL,
+                           `student_class_id` bigint NOT NULL,
+                           `user_id` bigint NOT NULL,
+                           `date_of_birth` varchar(255) DEFAULT NULL,
+                           `gender` varchar(255) DEFAULT NULL,
+                           `place_of_birth` varchar(255) DEFAULT NULL,
+                           PRIMARY KEY (`id`),
+                           KEY `FKcml1vvjs3bcqyxdcprjrjd2o0` (`major_id`),
+                           KEY `FKerf07pcq1qf4h6105lysj704j` (`student_class_id`),
+                           KEY `FKk5m148xqefonqw7bgnpm0snwj` (`user_id`),
+                           CONSTRAINT `FKcml1vvjs3bcqyxdcprjrjd2o0` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`),
+                           CONSTRAINT `FKerf07pcq1qf4h6105lysj704j` FOREIGN KEY (`student_class_id`) REFERENCES `student_class` (`id`),
+                           CONSTRAINT `FKk5m148xqefonqw7bgnpm0snwj` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -228,7 +231,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'B16DCCN168','Tạ Quang Hưng',1,1,2,'01-01-1998','Nam','Phú Thọ'),(2,'B17DCCN123','Nguyễn Nhật Ánh',3,3,29,'02-02-1999','Nữ','Hà Nội');
+INSERT INTO `student` VALUES (1,'B18DCCN168','Tạ Quang Tuấn',1,1,48,'01-01-2000','Nam','Phú Thọ'),(2,'B17DCCN123','Nguyễn Nhật Ánh',3,3,50,'02-02-1999','Nữ','Hà Nội');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,11 +241,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `student_class`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student_class` (
-  `id` bigint(20) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                                 `id` bigint NOT NULL,
+                                 `name` varchar(255) DEFAULT NULL,
+                                 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -252,7 +255,7 @@ CREATE TABLE `student_class` (
 
 LOCK TABLES `student_class` WRITE;
 /*!40000 ALTER TABLE `student_class` DISABLE KEYS */;
-INSERT INTO `student_class` VALUES (1,'D16CNPM4'),(2,'D16HTTT1'),(3,'D18KT1');
+INSERT INTO `student_class` VALUES (1,'D18CNPM4'),(2,'D17HTTT1'),(3,'D18KT1');
 /*!40000 ALTER TABLE `student_class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,16 +265,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `student_register`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student_register` (
-  `id` bigint(20) NOT NULL,
-  `course_id` bigint(20) NOT NULL,
-  `student_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKp6q35ojw2lgdwfa98dj8eqhb6` (`course_id`),
-  KEY `FKeujue5kevmqqy2ix1naixewxq` (`student_id`),
-  CONSTRAINT `FKeujue5kevmqqy2ix1naixewxq` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
-  CONSTRAINT `FKp6q35ojw2lgdwfa98dj8eqhb6` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`)
+                                    `id` bigint NOT NULL,
+                                    `course_id` bigint NOT NULL,
+                                    `student_id` bigint NOT NULL,
+                                    PRIMARY KEY (`id`),
+                                    KEY `FKp6q35ojw2lgdwfa98dj8eqhb6` (`course_id`),
+                                    KEY `FKeujue5kevmqqy2ix1naixewxq` (`student_id`),
+                                    CONSTRAINT `FKeujue5kevmqqy2ix1naixewxq` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
+                                    CONSTRAINT `FKp6q35ojw2lgdwfa98dj8eqhb6` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -291,18 +294,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `student_result`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student_result` (
-  `id` bigint(20) NOT NULL,
-  `average_mark` float NOT NULL,
-  `mark1` float NOT NULL,
-  `mark2` float NOT NULL,
-  `mark3` float NOT NULL,
-  `mark_to_char` varchar(255) DEFAULT NULL,
-  `student_register_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKnl2j0fsg86406pvt4oh3bp09a` (`student_register_id`),
-  CONSTRAINT `FKnl2j0fsg86406pvt4oh3bp09a` FOREIGN KEY (`student_register_id`) REFERENCES `student_register` (`id`)
+                                  `id` bigint NOT NULL,
+                                  `average_mark` float NOT NULL,
+                                  `mark1` float NOT NULL,
+                                  `mark2` float NOT NULL,
+                                  `mark3` float NOT NULL,
+                                  `mark_to_char` varchar(255) DEFAULT NULL,
+                                  `student_register_id` bigint NOT NULL,
+                                  PRIMARY KEY (`id`),
+                                  KEY `FKnl2j0fsg86406pvt4oh3bp09a` (`student_register_id`),
+                                  CONSTRAINT `FKnl2j0fsg86406pvt4oh3bp09a` FOREIGN KEY (`student_register_id`) REFERENCES `student_register` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -322,16 +325,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `subject`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `subject` (
-  `id` bigint(20) NOT NULL,
-  `code` varchar(255) DEFAULT NULL,
-  `mark1percent` float NOT NULL,
-  `mark2percent` float NOT NULL,
-  `mark3percent` float NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `number_of_credits` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+                           `id` bigint NOT NULL,
+                           `code` varchar(255) DEFAULT NULL,
+                           `mark1percent` float NOT NULL,
+                           `mark2percent` float NOT NULL,
+                           `mark3percent` float NOT NULL,
+                           `name` varchar(255) DEFAULT NULL,
+                           `number_of_credits` int NOT NULL,
+                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -351,13 +354,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+                        `id` bigint NOT NULL,
+                        `password` varchar(255) DEFAULT NULL,
+                        `username` varchar(255) DEFAULT NULL,
+                        `email` varchar(255) NOT NULL,
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -367,7 +370,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'$2a$12$LtbYtEzOBdnsiD/E9Wtj2OFuhizNrqYQXGNsRX0WL3qujvSAP8GtK','B16DCCN168','tech.hungtq@gmail.com'),(29,'$2a$12$LtbYtEzOBdnsiD/E9Wtj2O0ALUqD7bCPdYUh5q/8DXe3XkCTNlnrq','B17DCCN123','hungict100@gmail.com');
+INSERT INTO `user` VALUES (2,'$2a$12$0dn6nMxKJWCweyk3Femw3uDeciuWZVuwgp6VMvX0mgc/KeuMUTNfG','B16DCCN168','tech.hungtq@gmail.com'),(29,'$2a$12$0dn6nMxKJWCweyk3Femw3uDeciuWZVuwgp6VMvX0mgc/KeuMUTNfG','B17DCCN123','hungict100@gmail.com'),(48,'$2a$12$il1IYsWMFX5z4ZiZO18O9uedfdvyRIQwkbEr.76gcHaEkTyL1arAi','B17DCCN100','test@gmail.com'),(50,'$2a$12$0dn6nMxKJWCweyk3Femw3uDeciuWZVuwgp6VMvX0mgc/KeuMUTNfG','B17DCCN101','test1@gmail.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,16 +380,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_role` (
-  `user_role_id` bigint(20) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`user_role_id`),
-  KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`),
-  KEY `FK859n2jvi8ivhui0rl0esws6o` (`user_id`),
-  CONSTRAINT `FK859n2jvi8ivhui0rl0esws6o` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
+                             `user_role_id` bigint NOT NULL,
+                             `role_id` int NOT NULL,
+                             `user_id` bigint NOT NULL,
+                             PRIMARY KEY (`user_role_id`),
+                             KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`),
+                             KEY `FK859n2jvi8ivhui0rl0esws6o` (`user_id`),
+                             CONSTRAINT `FK859n2jvi8ivhui0rl0esws6o` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+                             CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -396,7 +399,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (3,1,2),(30,1,29);
+INSERT INTO `user_role` VALUES (3,1,48),(30,1,29),(49,1,48),(51,1,50);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -409,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-20 14:49:49
+-- Dump completed on 2021-05-27 23:14:48
